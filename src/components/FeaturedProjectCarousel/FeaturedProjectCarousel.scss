@@ -1,0 +1,324 @@
+.hero-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: .91;
+  max-height: 590px;
+  overflow: hidden;
+  background: var(--art-bg);
+  background-image: linear-gradient(135deg, transparent 0 49.8%, var(--art-line) 50%, transparent 50.2%);
+  color: var(--art-ink);
+  animation: rise-in 850ms 120ms both;
+
+  .art-topline,
+  .art-bottomline {
+    position: absolute;
+    z-index: 2;
+    right: 25px;
+    left: 25px;
+    display: flex;
+    justify-content: space-between;
+    font: 600 10px/1.4 var(--mono);
+    letter-spacing: 1.2px;
+  }
+
+  .art-topline {
+    top: 22px;
+  }
+
+  .art-bottomline {
+    bottom: 22px;
+    border-top: 1px solid var(--art-line);
+    padding-top: 12px;
+    font-size: 8px;
+  }
+
+  .kiosk-viewport {
+    position: absolute;
+    inset: 76px 7% 68px;
+    overflow: hidden;
+
+    .kiosk-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 650ms cubic-bezier(.22,.68,0,1);
+      will-change: transform;
+
+      .kiosk-slide {
+        display: flex;
+        flex: 0 0 100%;
+        justify-content: center;
+        min-width: 0;
+        height: 100%;
+
+        &[aria-hidden='true'] {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  .kiosk-interface {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    max-width: 440px;
+    height: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid var(--art-line);
+    background: var(--paper);
+    box-shadow: 0 24px 55px rgb(18 24 34 / 12%);
+    color: var(--ink);
+    animation: rise-in 850ms 280ms both;
+
+    .kiosk-brand {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 600 8px/1.4 var(--mono);
+      letter-spacing: .8px;
+    }
+
+    .kiosk-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(19px, 3vw, 34px);
+
+      .kiosk-kicker {
+        display: block;
+        margin-bottom: 14px;
+        color: var(--accent);
+        font: 600 9px/1.5 var(--mono);
+        letter-spacing: .8px;
+      }
+
+      strong {
+        display: block;
+        color: var(--ink);
+        font: 500 clamp(30px, 4vw, 48px) / 1.05 var(--display);
+        letter-spacing: -1.8px;
+      }
+    }
+
+    .journey-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 23px;
+
+      span {
+        min-height: 42px;
+        display: flex;
+        flex: 0 0 calc(50% - 4px);
+        min-width: 0;
+        align-items: center;
+        gap: 9px;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      i {
+        color: var(--accent);
+        font: 500 9px/1 var(--mono);
+        font-style: normal;
+      }
+    }
+  }
+
+  .kiosk-progress {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: min(100%, 440px);
+    display: flex;
+    gap: 4px;
+    margin: 0 auto;
+    padding: 0 14px 14px;
+
+    button {
+      height: 4px;
+      flex: 1;
+      padding: 0;
+      border: 0;
+      background: var(--line);
+      cursor: pointer;
+      transition: background-color 180ms ease;
+
+      &.is-active {
+        background: var(--accent);
+      }
+    }
+  }
+
+  .carousel-controls {
+    position: absolute;
+    z-index: 3;
+    top: 42px;
+    right: 18px;
+    display: flex;
+    gap: 4px;
+
+    button {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 1px solid var(--art-line);
+      background: var(--art-bg);
+      color: var(--art-ink);
+      font: 500 14px/1 var(--body);
+      cursor: pointer;
+      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+
+      &:hover {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--paper);
+      }
+    }
+  }
+
+  @media (width <= 800px) {
+    aspect-ratio: .8;
+    padding: 68px 5% 59px;
+
+    .kiosk-viewport {
+      inset: 72px 5% 59px;
+    }
+
+    .carousel-controls {
+      top: 42px;
+      right: 14px;
+    }
+
+    .art-topline,
+    .art-bottomline {
+      right: 14px;
+      left: 14px;
+      font-size: 8px;
+    }
+
+    .kiosk-interface {
+      .kiosk-brand {
+        padding: 0 9px;
+        font-size: 7px;
+      }
+
+      .kiosk-content {
+        padding: 17px;
+      }
+
+      .journey-steps {
+        gap: 5px;
+
+        span {
+          flex-basis: calc(50% - 2.5px);
+          min-height: 36px;
+          gap: 5px;
+          padding: 0 6px;
+          font-size: 9px;
+        }
+      }
+    }
+  }
+
+  @media (width <= 560px) {
+    width: 100%;
+    aspect-ratio: .8;
+    max-height: 430px;
+    padding: 72px 7% 48px;
+
+    .kiosk-viewport {
+      inset: 72px 7% 48px;
+    }
+
+    .carousel-controls {
+      top: 41px;
+      right: 17px;
+    }
+
+    .kiosk-interface {
+      .kiosk-content {
+        padding: 16px;
+
+        .kiosk-kicker {
+          margin-bottom: 10px;
+        }
+
+        strong {
+          font-size: 34px;
+        }
+      }
+
+      .journey-steps {
+        gap: 6px;
+        margin-top: 16px;
+
+        span {
+          flex-basis: calc(50% - 3px);
+          min-height: 34px;
+          padding: 0 7px;
+          font-size: 9px;
+        }
+      }
+    }
+
+    .art-topline,
+    .art-bottomline {
+      right: 17px;
+      left: 17px;
+    }
+  }
+
+  @media (width <= 380px) {
+    height: 430px;
+    aspect-ratio: auto;
+
+    .kiosk-viewport {
+      inset-inline: 6%;
+    }
+
+    .kiosk-interface {
+      .kiosk-content {
+        padding: 12px;
+
+        .kiosk-kicker {
+          margin-bottom: 8px;
+          font-size: 8px;
+        }
+
+        strong {
+          font-size: 30px;
+        }
+      }
+
+      .journey-steps {
+        gap: 4px;
+        margin-top: 12px;
+
+        span {
+          flex-basis: calc(50% - 2px);
+          min-height: 32px;
+          gap: 4px;
+          padding: 0 5px;
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}

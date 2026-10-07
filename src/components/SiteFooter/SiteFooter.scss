@@ -1,0 +1,41 @@
+.footer {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+
+  > span,
+  .back-to-top {
+    color: var(--muted);
+    font: 600 10px/1.4 var(--mono);
+    letter-spacing: 1.2px;
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    text-decoration: none;
+
+    span {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @media (width <= 560px) {
+    min-height: 72px;
+    flex-wrap: wrap;
+    padding: 15px 0;
+
+    > span {
+      display: none;
+    }
+
+    .back-to-top {
+      font-size: 9px;
+    }
+  }
+}

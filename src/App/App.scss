@@ -1,0 +1,18 @@
+.site-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 7.2%;
+  overflow: hidden;
+
+  > main {
+    padding: clamp(12px, 1.8vw, 24px);
+  }
+
+  @media (width <= 800px) {
+    padding: 0 6%;
+  }
+
+  @media (width <= 560px) {
+    padding: 0 22px;
+  }
+}

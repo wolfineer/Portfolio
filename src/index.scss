@@ -1,0 +1,138 @@
+:root {
+  --paper: #f5f4ef;
+  --ink: #20241f;
+  --muted: #73766f;
+  --line: #dcddd5;
+  --band: #eeeee8;
+  --accent: #bd543f;
+  --accent-wash: rgb(189 84 63 / 12%);
+  --button-bg: #20241f;
+  --button-text: #f5f4ef;
+  --art-bg: #dce3d5;
+  --art-ink: #343d33;
+  --art-line: rgb(44 60 43 / 13%);
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'DM Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body);
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+
+  &[data-theme='dark'] {
+    --paper: #0b1020;
+    --ink: #f2efff;
+    --muted: #a7a7bd;
+    --line: #2b2b43;
+    --band: #11172b;
+    --accent: #b59bff;
+    --accent-wash: rgb(181 155 255 / 15%);
+    --button-bg: #b59bff;
+    --button-text: #101326;
+    --art-bg: #171d38;
+    --art-ink: #e8e1ff;
+    --art-line: rgb(197 182 255 / 14%);
+
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--paper);
+  transition: color 240ms ease, background-color 240ms ease;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  color: var(--button-text);
+  background: var(--accent);
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+
+  &-mark {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--paper);
+    font: 700 14px/1 var(--display);
+  }
+}
+
+.section-wrap {
+  width: 100%;
+}
+
+.section-marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font: 600 10px / 1.4 var(--mono);
+  letter-spacing: 1.2px;
+
+  span:first-child {
+    color: var(--accent);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
